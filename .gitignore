@@ -14,7 +14,7 @@ restfuldrones/__pycache__
 *.bak
 
 # If you are using PyCharm #
-.idea/
+.idea
 .idea/*.iml
 .idea/*.xml
 .idea/$CACHE_FILE$
