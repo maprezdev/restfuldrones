@@ -1,0 +1,38 @@
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+django_drones_db/
+drones/__pycache__
+drones/migrations/__pycache__
+restfuldrones/__pycache__
+
+# Backup files #
+*.bak
+
+# If you are using PyCharm #
+.idea/
+
+# Python #
+*.py[cod]
+*$py.class
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# other
+.empty/
+.directory/
+logfile
