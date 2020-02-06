@@ -15,6 +15,9 @@ restfuldrones/__pycache__
 
 # If you are using PyCharm #
 .idea/
+.idea/*.iml
+.idea/*.xml
+.idea/$CACHE_FILE$
 
 # Python #
 *.py[cod]
