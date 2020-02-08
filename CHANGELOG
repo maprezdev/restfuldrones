@@ -5,6 +5,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.0.2] - 2020-02-08
+
+### Added
+- Add drones/urls.py file: Defines the URL patterns,
+
+### Changed
+- Update drones/view.py file: Some class-based views have been created, along with generic classes combined with
+serializer classes.
+- Update restfuldrones/urls.py file: uncomment and enable urlpatterns to include the URL patterns declared.
+in the previously coded drones/urls.py file.
+
+
 ## [0.0.1] - 2020-02-06
 
 ### Added
