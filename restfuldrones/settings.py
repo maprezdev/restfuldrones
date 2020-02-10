@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     # Drones application
     'drones.apps.DronesConfig',
+    # Django Filter
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Enable pagination and filters
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'drones.custompagination.LimitOffsetPaginationWithUpperBound',
+    'PAGE_SIZE': 4,
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+        'rest_framework.filters.SearchFilter',
+    ),
+}
