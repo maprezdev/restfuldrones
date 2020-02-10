@@ -5,6 +5,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.0.3] - 2020-02-10
+
+### Added
+- Add drones/custompagination.py file: To overrides the value of maximum_limit in pagination,
+
+### Changed
+- Update drones/views.py: Add filter, search and sort functionality to the name field.
+- Update drones/models.file: Add constraint to the name fields of the Pilot, Drone and DroneCategory models so that these are unique.
+- Update restfuldrones/setting.py file: Add global configuration to enable custom pagination and the django_filters application to enable filtering, searching, and ordering
+features.
+
+
 ## [0.0.2] - 2020-02-08
 
 ### Added
