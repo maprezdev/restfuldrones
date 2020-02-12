@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'drones.apps.DronesConfig',
     # Django Filter
     'django_filters',
+    # Token-based authentication
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -138,4 +140,8 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter',
         'rest_framework.filters.SearchFilter',
     ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
 }
