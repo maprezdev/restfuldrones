@@ -5,6 +5,26 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.0.4] - 2020-02-12
+
+### Added
+- Add drones/custompermission.py file: Added functionality to verify if the request of the HTTP verb is a secure method
+and we assign grants permissions to the request.
+- Add drones/migrations/0003_drone_owner.py: The drones_drone table was updated by adding the owner field and the admin
+user was assigned as the owner of the previously created drones.
+
+### Changed
+- Update restfuldrones/urls.py file: Enable url for login user.
+- Update drones/views.py: The perform_create method was overwritten. Now, when a new Drone is created, the user
+associated with the request will be saved as its owner, the functionality for permission policies was also created,
+and token-based authentication was enabled.
+- Update drones/serializer.py: Support functionality was added to serialize drones related to a user and declare an
+instance of the UserDroneSerializer class, in addition to this update you can see the user name of the owner of the
+created resource..
+- Update drones/models.file: Add authentication to model Drone.
+- Update restfuldrones/setting.py file: Functionality was added to some classes to use user authentication..
+
+
 ## [0.0.3] - 2020-02-10
 
 ### Added
