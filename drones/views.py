@@ -1,8 +1,11 @@
 # drones/views.py file
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, permissions
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
+from drones import custompermission
 from drones.models import DroneCategory
 from drones.models import Drone
 from drones.models import Pilot
@@ -43,12 +46,24 @@ class DroneList(generics.ListCreateAPIView):
     )
     search_fields = ('^name',)
     ordering_fields = ('name', 'manufacturing_date')
+    permission_classes = (  # sets permission policies
+        permissions.IsAuthenticatedOrReadOnly,
+        custompermission.IsCurrentUserOwnerOrReadOnly,
+    )
+
+    def perform_create(self, serializer):
+        """overrides the perform_create method in CreateModelMixin class"""
+        serializer.save(owner=self.request.user)
 
 
 class DroneDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Drone.objects.all()
     serializer_class = DroneSerializer
     name = 'drone-detail'
+    permission_classes = (  # sets permission policies
+        permissions.IsAuthenticatedOrReadOnly,
+        custompermission.IsCurrentUserOwnerOrReadOnly,
+    )
 
 
 class PilotList(generics.ListCreateAPIView):
@@ -66,12 +81,18 @@ class PilotList(generics.ListCreateAPIView):
         'name',
         'races_count'
     )
+    # enable token-bases authentication
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
 
 class PilotDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Pilot.objects.all()
     serializer_class = PilotSerializer
     name = 'pilot-detail'
+    # enable token-bases authentication
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
 
 class CompetitionFilter(filters.FilterSet):
