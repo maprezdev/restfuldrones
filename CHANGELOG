@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.0.5] - 2020-02-13
+
+### Added
+- Add pytest.ini file.
+
+### Changed
+- Update drones/views.py: Add throttling policies for the class-based views related
+to pilots, drones.
+- Update drones/tests.py file: Add unit tests.
+- Update restfuldrones/setting.py file: Add global config to default throttling classes and the desired rates.
+
+### Fixed
+- drones/views.py file. Rename 'filter_fields' to 'filterset_fields' attribute to fixed warning generated during unit tests with Pytest: MigrationNotice: `DroneCategoryList.filter_fields`
+attribute should be renamed `filterset_fields`. [See:](https://django-filter.readthedocs.io/en/master/guide/migration.html#view-attributes-renamed-867)
+
 
 ## [0.0.4] - 2020-02-12
 
@@ -21,8 +36,8 @@ and token-based authentication was enabled.
 - Update drones/serializer.py: Support functionality was added to serialize drones related to a user and declare an
 instance of the UserDroneSerializer class, in addition to this update you can see the user name of the owner of the
 created resource..
-- Update drones/models.file: Add authentication to model Drone.
-- Update restfuldrones/setting.py file: Functionality was added to some classes to use user authentication..
+- Update drones/models.py file: Add authentication to model Drone.
+- Update restfuldrones/setting.py file: Functionality was added to some classes to use user authentication.
 
 
 ## [0.0.3] - 2020-02-10
