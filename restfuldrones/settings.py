@@ -131,8 +131,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Enable pagination and filters
 REST_FRAMEWORK = {
+    # Enable pagination and filters
     'DEFAULT_PAGINATION_CLASS': 'drones.custompagination.LimitOffsetPaginationWithUpperBound',
     'PAGE_SIZE': 4,
     'DEFAULT_FILTER_BACKENDS': (
@@ -140,8 +140,20 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter',
         'rest_framework.filters.SearchFilter',
     ),
+    # global config to user authentication
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    )
+    ),
+    # global config to default throttling classes and the desired rates.
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '300/hour',
+        'user': '100/hour',
+        'drones': '200/hour',
+        'pilots': '150/hour',
+    }
 }
